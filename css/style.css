@@ -1,0 +1,32 @@
+body {
+	background-image: url("../images/couple.jpg");
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+	background-size: cover;
+	background-repeat: no-repeat;
+ }
+
+.jumbotron {
+	background-color: lightblue;
+	
+}
+
+@font-face {
+    font-family: 'P22 Catalan Regular';
+    src: url('p22_catalan_regular/p22-catalan-regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'plumcake';
+    src: url('plumcake/plumcake.ttf') format('truetype');
+}
+
+h1 {
+	font-family: 'P22 Catalan Regular';
+}
+
+h2 {
+	font-family: 'plumcake';
+	font-size: 36px;
+}
+
