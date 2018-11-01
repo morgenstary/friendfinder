@@ -1,6 +1,5 @@
 // Dependencies
 var express = require("express");
-var path = require("path");
 
 // Create an instance of the express app.
 var app = express();
@@ -9,16 +8,13 @@ var app = express();
 // process.env.PORT lets the port be set by Heroku
 var PORT = process.env.PORT || 8080;
 
-// Data
-var friends = {
-    "name":" ",
-    "photo":" ",
-    "scores":[
-        
-      ]
-  }
+// Middleware to convert data from front end to JSON
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
 
 // Routes
+require('./app/routing/apiRoutes')(app);
+require('./app/routing/htmlRoutes')(app);
 
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function () {

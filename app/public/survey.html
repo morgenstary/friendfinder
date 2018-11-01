@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -108,7 +107,8 @@
 
 
     <h3><strong>Question 7</strong></h3>
-    <h4>In a discussion, you should talk with your mouth full if what you're saying is very important and needs to be said quickly.</h4>
+    <h4>In a discussion, you should talk with your mouth full if what you're saying is very important and needs to be
+      said quickly.</h4>
     <select class="chosen-select" id="q7">
       <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
@@ -155,13 +155,15 @@
     <br>
 
     <!-- Submit Button -->
-    <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
-     Submit</button>
-
+    <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle"
+        aria-hidden="true"></i>
+      Submit</button>
+      <p id="message"></p>
     <hr>
     <footer class="footer">
       <div class="container">
-        <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/afhaque/friendfinder">GitHub Repo</a></p>
+        <p><a target="_blank" href="/api/friends">API Friends List</a> | <a href="https://github.com/afhaque/friendfinder">GitHub
+            Repo</a></p>
       </div>
     </footer>
 
@@ -212,19 +214,19 @@
     }
 
     // Capture the form inputs
-    $("#submit").on("click", function(event) {
+    $("#submit").on("click", function (event) {
       event.preventDefault();
-
+      $('#message').text(" ");
       // Form validation
       function validateForm() {
         var isValid = true;
-        $(".form-control").each(function() {
+        $(".form-control").each(function () {
           if ($(this).val() === "") {
             isValid = false;
           }
         });
 
-        $(".chosen-select").each(function() {
+        $(".chosen-select").each(function () {
 
           if ($(this).val() === "") {
             isValid = false;
@@ -254,18 +256,24 @@
         };
 
         // AJAX post the data to the friends API.
-        $.post("/api/friends", userData, function(data) {
+        $.post("/api/friends", userData, function (data) {
 
           // Grab the result from the AJAX post so that the best match's name and photo are displayed.
           $("#match-name").text(data.name);
-          $("#match-img").attr("src", data.photo);
+          $("#match-img").attr("src", data.photo).attr('height', 200);
 
           // Show the modal with the best match
           $("#results-modal").modal("toggle");
 
         });
+        // to clear form after submit, name and photo
+        $("#name").val('');
+        $("#photo").val('');
+        // to clear form after submit, for "chosen drop menu items"
+        $('.chosen-select option').prop('selected', false).trigger('chosen:updated');
       } else {
-        alert("Please fill out all fields before submitting!");
+        $('#message').text("Please fill out all fields before submitting!");
+        
       }
     });
   </script>
