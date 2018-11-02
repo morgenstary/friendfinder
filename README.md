@@ -10,8 +10,8 @@ Friend Finder is deployed to Heroku. Please check it out <a href="https://mighty
 
 ## Installation
 To install the application follow the instructions below:
-<pre><code>
+<code>
 git clone https://github.com/morgenstary/friendfinder.git
 cd friendfinder
 npm install
-</code></pre>
+</code>
